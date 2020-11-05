@@ -1,0 +1,17 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: consul-provider-payment
+  cloud:
+    consul:
+      host: 47.115.85.67
+      port: 8500
+      discovery:
+        # 注册到 consul 中的服务名
+        service-name: ${spring.application.name}
+        prefer-ip-address: true
+        # 开启检查心跳协议（默认是关闭的）如果不开启，服务就无法调用
+        heartbeat:
+          enabled: true

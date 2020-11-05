@@ -1,0 +1,6 @@
+server:
+  port: 8888
+
+baidu:
+  appkey: 7srGyTv7n2qvv9dwOomGQk76
+  securentkey: QtNctKiWCZ5f0KbGIvFnSx2pCOYpI7Ar

@@ -1,0 +1,39 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://101.37.117.252:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+
+mybatis:
+  # 开启打印SQL
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # 引入mapper.xml文件
+  mapperLocations: classpath:mapper/*.xml
+  # 别名注入
+  type-aliases-package: com.itan.entity
+
+eureka:
+  # 设置服务名称信息（自定义）并设置访问路径可以显示 IP 地址
+  instance:
+    instance-id: payment8001
+    prefer-ip-address: true
+    # 客户端向服务端发送心跳的时间间隔
+    lease-renewal-interval-in-seconds: 5
+    # 没心跳淘汰时间
+    lease-expiration-duration-in-seconds: 10
+  client:
+    # 表示是否将自己注册进EurekaServer默认为true
+    register-with-eureka: true
+    # 是否从EurekaServer抓取已有的注册信息，默认为true。单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡
+    fetch-registry: true
+    # 客户端注册进 eureka 服务列表内
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
