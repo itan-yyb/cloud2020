@@ -1,0 +1,15 @@
+server:
+  port: 3377
+
+spring:
+  application:
+    name: nacos-config-client
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 8.131.86.156:8848 #服务注册中心地址
+      config:
+        server-addr: 8.131.86.156:8848 #配置中心地址
+        file-extension: yaml #指定yaml格式的配置
+        group: TEST_GROUP # 分组默认值DEFAULT_GROUP
+        namespace: a175ca82-3270-4406-99ee-310408e40781 # 命名空间默认值public的命名空间ID值

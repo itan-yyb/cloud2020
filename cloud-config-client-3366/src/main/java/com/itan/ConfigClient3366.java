@@ -1,0 +1,15 @@
+package com.itan;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+/**
+ * @Author: yeyanbin
+ * @Date: 2020/11/8 15:50
+ */
+@SpringBootApplication
+public class ConfigClient3366 {
+    public static void main(String[] args) {
+        SpringApplication.run(ConfigClient3366.class,args);
+    }
+}

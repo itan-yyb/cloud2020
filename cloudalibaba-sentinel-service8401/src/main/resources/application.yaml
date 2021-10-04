@@ -1,0 +1,33 @@
+server:
+  port: 8401
+
+spring:
+  application:
+    name: cloudalibaba-sentinel-service
+  cloud:
+    nacos:
+      discovery:
+        # server-addr: 8.131.86.156:8848/ #配置Nacos地址
+        # 由于nacos配置成集群了，因此需要换成nginx监听的1111端口
+        server-addr: 8.131.86.156:1111
+    sentinel:
+      transport:
+        # sentinel 控制台地址
+        dashboard: localhost:8080
+        # 默认8719，假如被占用了会自动从8719开始依次+1扫描。直至找到未被占用的端口
+        port: 8720
+      eager: true # 取消延迟加载（默认是延迟加载的）
+      datasource:
+        ds1:
+          nacos:
+            server-addr: 8.131.86.156:1111
+            dataid: ${spring.application.name}
+            groupid: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

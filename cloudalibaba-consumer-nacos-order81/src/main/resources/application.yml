@@ -1,0 +1,14 @@
+server:
+  port: 81
+
+spring:
+  application:
+    name: nacos-order-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 8.131.86.156:8848/ #配置Nacos地址
+
+# 服务调用地址
+url:
+  nacos-user-service: http://nacos-payment-provider

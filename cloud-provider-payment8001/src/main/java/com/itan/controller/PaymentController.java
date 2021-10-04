@@ -7,10 +7,7 @@ import com.itan.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.ZonedDateTime;
 import java.util.HashMap;
@@ -23,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @RestController
-@RequestMapping("payment")
+@RequestMapping("payment1")
 public class PaymentController {
 
     @Autowired
@@ -52,6 +49,11 @@ public class PaymentController {
             e.printStackTrace();
         }
         return port;
+    }
+
+    @GetMapping("zipkin")
+    public String paymentZipkin() {
+        return "hi ,i'am paymentzipkin server fall back，O(∩_∩)O哈哈~";
     }
 
     public static void main(String[] args) {

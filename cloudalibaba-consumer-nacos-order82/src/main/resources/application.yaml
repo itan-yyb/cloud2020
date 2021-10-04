@@ -1,0 +1,28 @@
+server:
+  port: 82
+
+
+spring:
+  application:
+    name: nacos-order-consumer
+  cloud:
+    nacos:
+      discovery:
+        #server-addr: 8.131.86.156:8848/ #配置Nacos地址
+        # 换成nginx的1111端口，做集群
+        server-addr: 8.131.86.156:1111
+    sentinel:
+      transport:
+        # sentinel 控制台地址
+        dashboard: localhost:8080
+        # 默认8719，假如被占用了会自动从8719开始依次+1扫描。直至找到未被占用的端口
+        port: 8720
+      eager: true # 取消延迟加载（默认是延迟加载的）
+
+# 服务调用地址
+url:
+  nacos-user-service: http://nacos-payment-provider
+#对Feign的支持
+feign:
+  sentinel:
+    enabled: true

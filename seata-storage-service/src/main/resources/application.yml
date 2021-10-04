@@ -1,0 +1,40 @@
+server:
+  port: 2002
+
+spring:
+  application:
+    name: seata-storage-service
+  cloud:
+    alibaba:
+      seata:
+        # 自定义事务组名称需要与seata-server中配置vgroup_mapping后面的值对应
+        tx-service-group: fsp_tx_group
+    nacos:
+      discovery:
+        # 服务注册中心地址
+        server-addr: 8.131.86.156:8848
+  # 数据库连接
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://8.131.86.156:3306/seata_storage?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+
+# 开启Feign的Hystrix开关
+feign:
+  hystrix:
+    enabled: true # 如果处理自身的容错就开启。开启方式与服务生产端不一样。
+
+logging:
+  level:
+    io:
+      seata: info
+
+mybatis:
+  # 开启打印SQL
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # 引入mapper.xml文件
+  mapperLocations: classpath:mapper/*.xml
+  # 别名注入
+  type-aliases-package: com.itan.entity

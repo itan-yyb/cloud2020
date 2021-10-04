@@ -20,8 +20,15 @@ public class CommonResult<T> implements Serializable {
     private String message;
     /**返回数据**/
     private T data;
+
+    public CommonResult(String i, String s) {
+        this.code = i;
+        this.message = s;
+    }
+
     /**返回成功方法**/
     public static CommonResult success(Object data) {
         return new CommonResult("200","success",data);
     }
+
 }

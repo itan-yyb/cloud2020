@@ -1,0 +1,38 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: cloud-config-center #注册进Eureka服务器的微服务名
+  cloud:
+    config:
+      # 服务端配置
+      server:
+        git:
+          # 如果报错invalid privatekey: [B@761e233b，请将uri地址换成https开头的即可
+          # 如果报错Auth fail，请添加username，password属性并写上自己git账号和密码即可
+          uri: https://github.com/itan-yyb/springcloud-config.git #GitHub上面的git仓库地址
+          # 搜索目录
+          search-paths:
+            - springcloud-config
+      # 读取分支
+      label: master
+  # rabbitMQ相关配置
+  rabbitmq:
+    host: 8.131.86.156
+    port: 5672
+    username: admin
+    password: 123456
+
+eureka:
+  client:
+    service-url:
+      # 注册进 eureka 服务列表内
+      defaultZone: http://eureka7001.com:7001/eureka
+
+# rabbitMQ相关配置，暴露bus刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"
